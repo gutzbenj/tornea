@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Acquire sources
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+
+      #- name: Build site
+      #  run: |
+      #    npm install
+      #    npm run lint

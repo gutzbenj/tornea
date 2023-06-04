@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  pages: write
+  id-token: write
+  contents: write
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  deploy:
+    needs: [ lint ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Acquire sources
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+
+      - name: Build site
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
