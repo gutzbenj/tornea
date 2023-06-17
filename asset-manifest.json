@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/tornea/static/js/main.e9974e1e.js",
+    "index.html": "/tornea/index.html",
+    "main.e9974e1e.js.map": "/tornea/static/js/main.e9974e1e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e9974e1e.js"
+  ]
+}
